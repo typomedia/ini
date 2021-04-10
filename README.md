@@ -26,8 +26,8 @@ composer require typomedia/ini
 use Typomedia\Ini\Parser;
 
 $ini = file_get_contents('tests/Fixtures/Array.ini'); 
-$dumper = new Parser();
-$array = $dumper->parse($ini);
+$parser = new Parser();
+$array = $parser->parse($ini);
 ```
 
 ### Dumper

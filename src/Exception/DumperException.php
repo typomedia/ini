@@ -23,16 +23,8 @@ class DumperException extends Exception
     public function __construct($message, $code = 0)
     {
 
-        $this->message = sprintf("Section \"%s\" is not an array!", $message);
+        $this->message = sprintf('Section "%s" is not an array!', $message);
 
         parent::__construct($message, $code);
-    }
-
-    /**
-     * @return string
-     */
-    public function __toString()
-    {
-        return __CLASS__ . ": [{$this->code}]: {$this->message}" . PHP_EOL;
     }
 }

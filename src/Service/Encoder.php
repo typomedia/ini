@@ -14,15 +14,16 @@ class Encoder
      */
     public static function normalize($value)
     {
-        if (is_bool($value)) {
-            return (int) $value;
+        switch (true) {
+            case is_bool($value):
+                return (int) $value;
+            case is_string($value):
+                return '"' . $value . '"';
+            case $value instanceof \DateTime:
+                return '"' . $value->format('Y-m-d H:i:s') . '"';
+            default:
+                return $value;
         }
-
-        if (is_string($value)) {
-            return '"' . $value . '"';
-        }
-
-        return $value;
     }
 
     /**
@@ -31,8 +32,16 @@ class Encoder
      */
     public static function sanitize($key)
     {
-        $key = preg_replace('/[^A-Za-z0-9\-_]/', '', $key);
+        return preg_replace('/[^A-Za-z0-9\-_]/', '', $key);
+    }
 
-        return $key;
+    /**
+     * @param $array
+     * @param $value
+     * @return array|mixed|null
+     */
+    public static function unflat($array, $value = null)
+    {
+        return $array ? [array_shift($array) => self::unflat($array, $value)] : $value;
     }
 }

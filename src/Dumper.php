@@ -18,30 +18,42 @@ class Dumper implements DumperInterface
 
     /**
      * @param array $config
-     * @return string
+     * @return mixed
      * @throws DumperException
      */
     public function dump(array $config = [])
     {
-        foreach ($config as $name => $sections) {
-            if (!is_array($sections)) {
-                throw new DumperException($name);
+        $result = '';
+        foreach ($config as $section => $item) {
+            if (!is_array($item)) {
+                throw new DumperException($section);
             }
+            $result .= '[' . $section . ']' . PHP_EOL;
+            $result .= $this->loop($item);
+        }
 
-            $this->ini .= '[' . $name . ']' . PHP_EOL;
+        return $result;
+    }
 
-            foreach ($sections as $property => $item) {
-                if (is_array($item)) {
-                    foreach ($item as $key => $value) {
-                        $key = is_int($key) ? '[]' : '[' . Encoder::sanitize($key) . ']';
-                        $this->ini .= $property . $key . ' = ' . Encoder::normalize($value) . PHP_EOL;
-                    }
-                } else {
-                    $this->ini .= $property . ' = ' . Encoder::normalize($item) . PHP_EOL;
-                }
+    protected function loop(array $array, string $parent = ''): string
+    {
+        $result = '';
+        foreach ($array as $key => $value) {
+            $key = Encoder::sanitize($key);
+            $property = $parent ? $parent . '[' . $key . ']' : $key;
+
+            if (is_array($value)) {
+                $result .= $this->loop($value, $property);
+            } else {
+                $result .= $this->add($property, $value);
             }
         }
 
-        return $this->ini;
+        return $result;
+    }
+
+    protected function add($property, $value)
+    {
+        return $property . ' = ' . Encoder::normalize($value) . PHP_EOL;
     }
 }

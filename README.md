@@ -6,7 +6,7 @@ The Library is [PSR-1](https://www.php-fig.org/psr/psr-1/), [PSR-4](https://www.
 
 ## Requirements
 
-- `>= PHP 7.1`
+- `>= PHP 7.4`
 
 ## Dependencies
 

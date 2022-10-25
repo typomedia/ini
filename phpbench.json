@@ -1,0 +1,5 @@
+{
+  "runner.file_pattern": "*Test.php",
+  "runner.bootstrap": "vendor/autoload.php",
+  "runner.path": "tests"
+}

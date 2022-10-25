@@ -4,14 +4,17 @@ return [
     'PostgreSQL' => [
         'developer' => 'Michael Stonebraker',
         'database' => [
-            'system' => 'postgres',
+            'system' => [
+                'user' => 'philipp',
+                'name' => 'postgres',
+            ],
             'embedded' => 0,
             'license' => 'PostgreSQL License',
         ],
         'website' => [
             'address' => 'postgresql.org',
         ],
-        'tools' => ['psql', 'pg_dump']
+        'tools' => ['psql', 'pg_dump'],
     ],
     'MariaDB' => [
         'developer' => 'Michael Widenius',

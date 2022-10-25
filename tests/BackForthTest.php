@@ -8,10 +8,10 @@ use Typomedia\Ini\Parser;
 use Typomedia\Ini\Exception\DumperException;
 
 /**
- * Class RevertTest
+ * Class BackForthTest
  * @package Typomedia\Tests\Ini
  */
-class RevertTest extends TestCase
+class BackForthTest extends TestCase
 {
     /**
      * @var Parser
@@ -23,7 +23,7 @@ class RevertTest extends TestCase
      */
     protected $dumper;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->parser = new Parser();
         $this->dumper = new Dumper();

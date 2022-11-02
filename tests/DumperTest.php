@@ -17,7 +17,7 @@ class DumperTest extends TestCase
      */
     protected $dumper;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->dumper = new Dumper();
     }
@@ -61,5 +61,16 @@ class DumperTest extends TestCase
     {
         $this->expectExceptionMessage('Section');
         $this->dumper->dump(['Section' => 1234]);
+    }
+
+    public function testDumpComplexJson()
+    {
+        $file = file_get_contents('tests/Fixtures/Complex.json');
+        $json = json_decode($file, true);
+
+        $actual = $this->dumper->dump($json);
+
+        $expected = file_get_contents('tests/Fixtures/Complex.ini');
+        $this->assertEquals($expected, $actual);
     }
 }

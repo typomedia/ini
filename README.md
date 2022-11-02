@@ -2,7 +2,9 @@
 
 The INI component loads and dumps INI configs.
 
-The Library is [PSR-1](https://www.php-fig.org/psr/psr-1/), [PSR-4](https://www.php-fig.org/psr/psr-4/), [PSR-12](https://www.php-fig.org/psr/psr-12/) compliant and fully compatible with `parse_ini_string()` for nested properties.
+The Library is [PSR-1](https://www.php-fig.org/psr/psr-1/), [PSR-4](https://www.php-fig.org/psr/psr-4/), [PSR-12](https://www.php-fig.org/psr/psr-12/) compliant and a replacement for `parse_ini_string()` without limitations for nested properties.
+
+**Unit Tests have a Code Coverage of 100%!**
 
 ## Requirements
 

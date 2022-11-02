@@ -3,7 +3,6 @@
 namespace Typomedia\Tests\Ini;
 
 use PhpBench\Benchmark\Metadata\Annotations\Iterations;
-use Typomedia\Ini\Dumper;
 use Typomedia\Ini\Parser;
 
 /**

@@ -21,6 +21,8 @@
         "phpbench/phpbench": "^1.2",
         "squizlabs/php_codesniffer": "^3.7",
         "phpmd/phpmd": "^2.13",
+        "laminas/laminas-config": "^3.3",
+        "matomo/ini": "^3.0",
         "ext-json": "*"
     },
     "scripts": {

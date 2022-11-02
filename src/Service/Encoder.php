@@ -16,11 +16,11 @@ class Encoder
     {
         switch (true) {
             case is_bool($value):
-                return (int) $value;
+                return $value ? 'true' : 'false';
             case is_string($value):
-                return '"' . $value . '"';
+                return (string) $value;
             case $value instanceof \DateTime:
-                return '"' . $value->format('Y-m-d H:i:s') . '"';
+                return $value->format('Y-m-d H:i:s');
             default:
                 return $value;
         }
